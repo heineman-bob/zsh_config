@@ -1,6 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/bob/.oh-my-zsh
-export PATH=/Users/bob/Documents/Drivers/:$PATH
+export PATH=/Users/bob/Documents/Drivers:$PATH
 
 #Set Java Home
 export JAVA_HOME=$(/usr/libexec/java_home)
@@ -49,11 +49,11 @@ ZSH_THEME="bira"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-flow rails pip common-aliases sublime osx)
+plugins=(git git-flow rails pip common-aliases sublime osx docker)
 
 # User configuration
 
-export PATH="/Users/bob/.rvm/gems/ruby-2.2.1/bin://anaconda/bin:/Users/bob/.rvm/gems/ruby-2.2.1@global/bin:/Users/bob/.rvm/rubies/ruby-2.2.1/bin:/Users/bob/keys/:/Users/bob/jython2.7b3/:/usr/local/bin/:/Users/bob/Downloads/birkenfeld-sphinx-f87ae5c0272e:/Users/bob/Development/pig-0.14.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/Users/bob/.rvm/bin:/Users/bob/Development/RushStreetGaming/SurveyApi/util:$PATH"
+export PATH="/Users/bob/.rvm/gems/ruby-2.2.1/bin://anaconda/bin:/Users/bob/.rvm/gems/ruby-2.2.1@global/bin:/Users/bob/.rvm/rubies/ruby-2.2.1/bin:/Users/bob/keys/:/Users/bob/jython2.7b3:/usr/local/bin/:/Users/bob/Downloads/birkenfeld-sphinx-f87ae5c0272e:/Users/bob/Development/pig-0.14.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/Users/bob/.rvm/bin:/Users/bob/Development/RushStreetGaming/SurveyApi/util:$HOME/scripts:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # include .bashrc if it exists
@@ -71,4 +71,8 @@ source $ZSH/oh-my-zsh.sh
 export VISUAL=sublime
 export EDITOR='$VISUAL'
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PYTHONPATH=/Users/bob/Development/Sandbox/HTML/dscqg-generator:$PYTHONPATH
+alias dsc="cd ~/Development/Sandbox/HTML/dscqg-generator/"
+
+eval $(docker-machine env default)
