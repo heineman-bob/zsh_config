@@ -1,5 +1,6 @@
 
 #Docker Commands
+#------------------------------------------------------------------------------------------------------
 alias dm="docker-machine"
 alias dmls="docker-machine ls"
 alias dmps="docker-machine ps"
@@ -8,7 +9,18 @@ alias dockerdev="cd ~/Development/Tools/docker/"
 alias dockerstop="docker ps| grep ago | xargs docker stop"
 alias dcb="docker-compose build"
 alias dc="docker-compose"
-alias dm_create='dm create --driver virtualbox --virtualbox-cpu-count "4" --virtualbox-memory "4096"'
+alias dm_create='dm create --driver virtualbox --virtualbox-cpu-count "4" --virtualbox-memory "4096" --virtualbox-disk-size "40000"'
+alias docker-delete-images=delete_images
+alias docker-delete-containers="docker ps -a | grep 'ago' | awk '{print $1}' | xargs  docker rm"
+alias dockerssh=docker_connect
+delete_images(){
+  docker images |grep ago | grep $1 | awk '{print $3}' | xargs docker rmi -f
+}
+
+docker_connect(){
+  docker exec -it $1 bash
+}
+
 #System
 #------------------------------------------------------------------------------------------------------
 alias z="sublime ~/.zshrc ~/.zsh_aliases ~/.zsh_exports"
@@ -20,6 +32,7 @@ alias tailf="tail -f"
 alias act="source activate"
 alias fenv="env | grep "
 alias process="ps -ef | grep "
+alias exports="sublime ~/.zshrc_exports"
 
 
 #System info aliases
