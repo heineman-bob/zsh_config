@@ -12,13 +12,23 @@ alias dc="docker-compose"
 alias dm_create='dm create --driver virtualbox --virtualbox-cpu-count "4" --virtualbox-memory "4096" --virtualbox-disk-size "40000"'
 alias docker-delete-images=delete_images
 alias docker-delete-containers="docker ps -a | grep 'ago' | awk '{print $1}' | xargs  docker rm"
+alias yoshibuild=yoshi_build
 alias dockerssh=docker_connect
+alias spring-stop="ps -ef | grep 'spring server'| grep -v grep | awk '{print $2}' | xargs kill > /tmp/whocares"
+
 delete_images(){
   docker images |grep ago | grep $1 | awk '{print $3}' | xargs docker rmi -f
 }
 
 docker_connect(){
   docker exec -it $1 bash
+}
+
+yoshi_build(){
+  dcb
+  docker tag yoshi:latest 731451978534.dkr.ecr.us-east-1.amazonaws.com/yoshi:latest
+  aws ecr get-login --region us-east-1 | bash
+  docker push 731451978534.dkr.ecr.us-east-1.amazonaws.com/yoshi:latest
 }
 
 #System
@@ -61,7 +71,9 @@ alias sourcetree="open -a /Applications/SourceTree.app/Contents/MacOS/SourceTree
 alias dsc="cd /Users/bob/Development/Sandbox/HTML/dscqg-generator; source activate dsc"
 alias dbreset="rake db:drop; rake db:create; rake db:migrate; rake db:seed; erd; open erd.pdf"
 alias vars="env | grep "
+alias data="cd $HOME/Development/RushStreetGaming/data-platform"
 alias addpow="pwd | pbcopy; cd ~/.pow; ln -s `pbpaste`; cd `pbpaste`; rvm env . > .powenv"
+alias dpyoshi="/Users/bob/Development/RushStreetGaming/data-platform/yoshi"
 
 #Rails aliases
 #------------------------------------------------------------------------------------------------------
