@@ -8,6 +8,7 @@ alias dmcr="docker-machine create -d virtualbox"
 alias dockerdev="cd ~/Development/Tools/docker/"
 alias dockerstop="docker ps| grep ago | xargs docker stop"
 alias dcb="docker-compose build"
+alias dcbr="dcb; dc down; dc up"
 alias dc="docker-compose"
 alias dm_create='dm create --driver virtualbox --virtualbox-cpu-count "4" --virtualbox-memory "4096" --virtualbox-disk-size "40000"'
 alias docker-delete-images=delete_images
@@ -15,6 +16,19 @@ alias docker-delete-containers="docker ps -a | grep 'ago' | awk '{print $1}' | x
 alias yoshibuild=yoshi_build
 alias dockerssh=docker_connect
 alias spring-stop="ps -ef | grep 'spring server'| grep -v grep | awk '{print $2}' | xargs kill > /tmp/whocares"
+
+
+# Kill all running containers.
+alias dockerkillall='docker kill $(docker ps -q)'
+
+# Delete all stopped containers.
+alias dockercleanc='printf "\n>>> Deleting stopped containers\n\n" && docker rm $(docker ps -a -q)'
+
+# Delete all untagged images.
+alias dockercleani='printf "\n>>> Deleting untagged images\n\n" && docker rmi $(docker images -q -f dangling=true)'
+
+# Delete all stopped containers and untagged images.
+alias dockerclean='dockercleanc || true && dockercleani'
 
 delete_images(){
   docker images |grep ago | grep $1 | awk '{print $3}' | xargs docker rmi -f
