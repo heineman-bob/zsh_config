@@ -66,6 +66,11 @@ if [ -f $HOME/.zsh_personal_aliases ]; then
     . $HOME/.zsh_personal_aliases
 fi
 
+# include .zsh_personal_exports if it exists
+if [ -f $HOME/.zsh_personal_exports ]; then
+    . $HOME/.zsh_personal_exports
+fi
+
 # include .zsh_exports if it exists
 if [ -f $HOME/.zsh_exports ]; then
     . $HOME/.zsh_exports

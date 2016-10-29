@@ -17,7 +17,7 @@ alias yoshibuild=yoshi_build
 alias python-base-build=python_base_build
 alias dockerssh=docker_connect
 alias spring-stop="ps -ef | grep 'spring server'| grep -v grep | awk '{print $2}' | xargs kill > /tmp/whocares"
-
+alias dockeradmin="sudo groupadd docker; sudo gpasswd -a ${USER} docker; sudo service docker restart; exit"
 
 # Kill all running containers.
 alias dockerkillall='docker kill $(docker ps -q)'
@@ -55,7 +55,7 @@ python_base_build(){
 
 #System
 #------------------------------------------------------------------------------------------------------
-alias z="sublime ~/.zshrc ~/.zsh_aliases ~/.zsh_exports ~/.zsh_personal_aliases"
+alias z="sublime ~/.zshrc ~/.zsh_aliases ~/.zsh_exports ~/.zsh_personal_aliases ~/.zsh_personal_exports"
 alias r="source ~/.zshrc;rvm use `cat .ruby-version`@`cat .ruby-gemset`"
 alias server="python -m SimpleHTTPServer"
 alias resource="source $HOME/.bash_profile"
