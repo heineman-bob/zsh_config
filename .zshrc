@@ -56,12 +56,17 @@ plugins=(git git-flow rails pip common-aliases sublime osx docker docker-compose
 export PATH="/Users/bob/.rvm/gems/ruby-2.2.1/bin://anaconda/bin:/Users/bob/.rvm/gems/ruby-2.2.1@global/bin:/Users/bob/.rvm/rubies/ruby-2.2.1/bin:/Users/bob/keys/:/Users/bob/jython2.7b3:/usr/local/bin/:/Users/bob/Downloads/birkenfeld-sphinx-f87ae5c0272e:/Users/bob/Development/pig-0.14.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/Users/bob/.rvm/bin:/Users/bob/Development/RushStreetGaming/SurveyApi/util:$HOME/scripts:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
-# include .bashrc if it exists
+# include .zsh_aliases if it exists
 if [ -f $HOME/.zsh_aliases ]; then
     . $HOME/.zsh_aliases
 fi
 
-# include .bashrc if it exists
+# include .zsh_personal_aliases if it exists
+if [ -f $HOME/.zsh_personal_aliases ]; then
+    . $HOME/.zsh_personal_aliases
+fi
+
+# include .zsh_exports if it exists
 if [ -f $HOME/.zsh_exports ]; then
     . $HOME/.zsh_exports
 fi

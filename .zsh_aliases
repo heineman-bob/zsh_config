@@ -14,6 +14,7 @@ alias dm_create='dm create --driver virtualbox --virtualbox-cpu-count "4" --virt
 alias docker-delete-images=delete_images
 alias docker-delete-containers="docker ps -a | grep 'ago' | awk '{print $1}' | xargs  docker rm"
 alias yoshibuild=yoshi_build
+alias python-base-build=python_base_build
 alias dockerssh=docker_connect
 alias spring-stop="ps -ef | grep 'spring server'| grep -v grep | awk '{print $2}' | xargs kill > /tmp/whocares"
 
@@ -45,9 +46,16 @@ yoshi_build(){
   docker push 731451978534.dkr.ecr.us-east-1.amazonaws.com/yoshi:latest
 }
 
+python_base_build(){
+  docker build -t python-base:latest . --no-cache
+  aws ecr get-login --region us-east-1 | bash
+  docker tag python-base:latest 731451978534.dkr.ecr.us-east-1.amazonaws.com/python-base:latest
+  docker push 731451978534.dkr.ecr.us-east-1.amazonaws.com/python-base:latest
+}
+
 #System
 #------------------------------------------------------------------------------------------------------
-alias z="sublime ~/.zshrc ~/.zsh_aliases ~/.zsh_exports"
+alias z="sublime ~/.zshrc ~/.zsh_aliases ~/.zsh_exports ~/.zsh_personal_aliases"
 alias r="source ~/.zshrc;rvm use `cat .ruby-version`@`cat .ruby-gemset`"
 alias server="python -m SimpleHTTPServer"
 alias resource="source $HOME/.bash_profile"
@@ -57,6 +65,12 @@ alias act="source activate"
 alias fenv="env | grep "
 alias process="ps -ef | grep "
 alias exports="sublime ~/.zshrc_exports"
+
+
+# Git 
+alias gif="git update-index --skip-worktree"
+alias gwf="git update-index --no-skip-worktree"
+alias lif="git ls-files -v . | grep '^S'"
 
 
 #System info aliases
