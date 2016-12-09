@@ -53,7 +53,7 @@ plugins=(git git-flow rails pip common-aliases sublime osx docker docker-compose
 
 # User configuration
 
-export PATH="/Users/bob/.rvm/gems/ruby-2.2.1/bin://anaconda/bin:/Users/bob/.rvm/gems/ruby-2.2.1@global/bin:/Users/bob/.rvm/rubies/ruby-2.2.1/bin:/Users/bob/keys/:/Users/bob/jython2.7b3:/usr/local/bin/:/Users/bob/Downloads/birkenfeld-sphinx-f87ae5c0272e:/Users/bob/Development/pig-0.14.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/Users/bob/.rvm/bin:/Users/bob/Development/RushStreetGaming/SurveyApi/util:$HOME/scripts:$PATH"
+export PATH="/Users/bob/.rvm/gems/ruby-2.2.1/bin://anaconda/bin:/Users/bob/.rvm/gems/ruby-2.2.1@global/bin:/Users/bob/.rvm/rubies/ruby-2.2.1/bin:/Users/bob/keys/:/Users/bob/jython2.7b3:/usr/local/bin/:/Users/bob/Downloads/birkenfeld-sphinx-f87ae5c0272e:/Users/bob/Development/pig-0.14.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/Users/bob/.rvm/bin:/Users/bob/Development/RushStreetGaming/SurveyApi/util:$HOME/scripts:/usr/local/terraform/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # include .zsh_aliases if it exists
@@ -78,11 +78,12 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 
-export VISUAL=sublime
+export VISUAL='sublime -n -w'
 export EDITOR='$VISUAL'
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PYTHONPATH=/Users/bob/Development/Sandbox/HTML/dscqg-generator:$PYTHONPATH
 alias dsc="cd ~/Development/Sandbox/HTML/dscqg-generator/"
 
 eval $(docker-machine env default)
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
